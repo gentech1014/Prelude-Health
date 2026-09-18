@@ -1,0 +1,53 @@
+/* Shared single-choice pill row — one label, N mutually-exclusive options. */
+
+.single-choice-pills {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.single-choice-pills__label {
+  margin: 0;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.single-choice-pills__options {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.single-choice-pills__option {
+  flex: 1;
+  min-width: 88px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-body-sm);
+  cursor: pointer;
+  transition:
+    transform 0.15s cubic-bezier(0.32, 0.72, 0, 1),
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.single-choice-pills__option:hover:not(.single-choice-pills__option--selected) {
+  border-color: var(--color-primary-border);
+  background: var(--color-surface-hover);
+}
+
+.single-choice-pills__option:active {
+  transform: scale(0.96);
+}
+
+.single-choice-pills__option--selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}

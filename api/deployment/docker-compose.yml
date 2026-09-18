@@ -1,0 +1,11 @@
+services:
+  prelude-health-api:
+    image: ${IMAGE}
+    container_name: prelude-health-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - PATIENT_APP_BASE_URL=${PATIENT_APP_BASE_URL}
+      - BOOKING_APP_BASE_URL=${BOOKING_APP_BASE_URL}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}

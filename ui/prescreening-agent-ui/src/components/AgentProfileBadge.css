@@ -1,0 +1,61 @@
+/* The assistant's photo + name pill, fixed to the bottom-right corner — used on every
+   screen that shows her actively on the call. Deliberately fixed (not part
+   of the scrollable flow) so she stays put regardless of page content. */
+
+.agent-profile-badge {
+  position: fixed;
+  bottom: 130px;
+  right: 24px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* A local, self-contained entrance — deliberately not inherited from the
+     page transition, since this sits outside AnimatePresence (position:
+     fixed needs no animated ancestor between it and the viewport). */
+  animation: agent-profile-badge-in 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes agent-profile-badge-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.agent-profile-badge__avatar {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 3px solid var(--color-surface);
+  box-shadow: var(--shadow-primary-glow), var(--shadow-md);
+  flex-shrink: 0;
+}
+
+.agent-profile-badge__pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -14px;
+  padding: var(--space-1) var(--space-3) var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--color-success-bg);
+  box-shadow: var(--shadow-sm);
+}
+
+.agent-profile-badge__name {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text);
+}
+
+.agent-profile-badge__role {
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}

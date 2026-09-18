@@ -1,0 +1,104 @@
+.confirm-details-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.confirm-details-row {
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: var(--space-3) var(--space-4);
+  gap: var(--space-4);
+}
+
+.confirm-details-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.confirm-details-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.confirm-details-label {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--fw-medium);
+}
+
+/* Relative wrapper so the Enter button can be positioned inside the field */
+.confirm-details-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.confirm-details-input {
+  font-size: var(--fs-body);
+  color: var(--color-text);
+  border: none;
+  background: transparent;
+  /* Right padding reserves room for the Enter button */
+  padding: 0 36px 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+}
+
+/* Enter button sits inside the input on the right */
+.confirm-details-input-wrap .answer-input__send {
+  position: absolute;
+  right: 0;
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.confirm-details-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.confirm-details-input:focus {
+  outline: none;
+  border-bottom: 1px dashed var(--color-primary);
+}
+
+.confirm-details-info {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: var(--color-primary-subtle);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-1);
+}
+
+.confirm-details-info-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.confirm-details-info p {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}

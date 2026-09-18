@@ -1,0 +1,54 @@
+/* The assistant's avatar for the Welcome/call screen — concentric indigo rings
+   around her photo. */
+
+.assistant-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.assistant-avatar__rings {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  flex-shrink: 0;
+}
+
+.assistant-avatar__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+  --ripple-scale: 1.05;
+  --ripple-opacity: 0.7;
+  animation: ripple-pulse 3.2s ease-in-out infinite;
+}
+
+.assistant-avatar__ring--outer {
+  inset: 0;
+  background: color-mix(in srgb, var(--color-primary) 6%, transparent);
+  animation-delay: 0.3s;
+}
+
+.assistant-avatar__ring--mid {
+  inset: 5%;
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  animation-delay: 0.15s;
+}
+
+.assistant-avatar__core {
+  position: absolute;
+  inset: 10%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--color-primary);
+  box-shadow: var(--shadow-primary-glow), var(--shadow-md);
+  border: 3px solid var(--color-surface);
+}
+
+.assistant-avatar__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}

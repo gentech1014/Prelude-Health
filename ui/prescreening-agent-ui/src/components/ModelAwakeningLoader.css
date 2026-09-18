@@ -1,0 +1,70 @@
+/* Ripple loader for the Model Loading / Awakening screen — the AI assistant connecting. */
+
+.model-awakening-loader {
+  --maal-size: 200px;
+  --maal-duration: 2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.model-awakening-loader__rings {
+  position: relative;
+  width: var(--maal-size);
+  height: var(--maal-size);
+}
+
+.model-awakening-loader__ring {
+  position: absolute;
+  border-radius: 50%;
+  --ripple-scale: 1.12;
+  animation: ripple-pulse var(--maal-duration) infinite ease-in-out;
+}
+
+/* Outermost ring — most transparent, largest, entirely indigo (no gold border). */
+.model-awakening-loader__ring--4 {
+  inset: 0;
+  z-index: 1;
+  background: color-mix(in srgb, var(--color-primary) 12%, var(--color-surface) 88%);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+  animation-delay: 0.6s;
+}
+
+.model-awakening-loader__ring--3 {
+  inset: 9%;
+  z-index: 2;
+  background: color-mix(in srgb, var(--color-primary) 22%, var(--color-surface) 78%);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
+  animation-delay: 0.4s;
+}
+
+.model-awakening-loader__ring--2 {
+  inset: 18%;
+  z-index: 3;
+  background: color-mix(in srgb, var(--color-primary) 34%, var(--color-surface) 66%);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 60%, transparent);
+  animation-delay: 0.2s;
+}
+
+/* Innermost — a SOLID indigo disc; the icon is warm Gold for a premium touch (icon only, never the ring/fill). */
+.model-awakening-loader__core {
+  position: absolute;
+  inset: 35%;
+  z-index: 4;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  background: var(--color-primary);
+  color: var(--color-primary-subtle);
+  box-shadow: var(--shadow-primary-glow);
+  --ripple-scale: 1.08;
+  animation: ripple-pulse var(--maal-duration) infinite ease-in-out;
+}
+
+.model-awakening-loader__label {
+  margin: 0;
+  font-size: var(--fs-body);
+  color: var(--color-text-secondary);
+  text-align: center;
+}

@@ -1,0 +1,90 @@
+/* One or more relevant hospital stays, or a "none" opt-out. */
+
+.hospital-stay-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.hospital-stay-list__none {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.hospital-stay-list__none-text {
+  font-size: 0.9rem;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+
+.hospital-stay-list__entries {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.hospital-stay-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.hospital-stay-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hospital-stay-card__index {
+  font-size: 0.8rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+
+.hospital-stay-card__remove {
+  display: grid;
+  place-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-error-bg);
+  color: var(--color-error);
+}
+
+.hospital-stay-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.hospital-stay-card__field-label {
+  font-size: 0.8rem;
+  font-weight: var(--fw-medium);
+  color: var(--color-text-secondary);
+}
+
+.hospital-stay-list__add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--color-primary-border);
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+  font-weight: var(--fw-semibold);
+  font-size: 0.9rem;
+}

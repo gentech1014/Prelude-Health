@@ -1,0 +1,47 @@
+/* Medication entry — a free-text field plus an alternate path to snap a
+   photo of the medication or its package instead of typing it out. */
+
+.medication-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.medication-input__label {
+  font-size: 0.9rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.medication-input__actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.medication-input__button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  font-weight: var(--fw-semibold);
+  font-size: 0.9rem;
+}
+
+.medication-input__button--secondary {
+  border: 1px solid var(--color-primary-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.medication-input__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

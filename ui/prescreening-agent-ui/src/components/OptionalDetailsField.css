@@ -1,0 +1,56 @@
+/* Shared optional free-text elaboration card — the same "AnswerInput in a
+   card, with a helper line" shape used after almost every multi-select or
+   pill question. */
+
+.optional-details-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.optional-details-field__field {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.optional-details-field__icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+  margin-top: var(--space-1);
+}
+
+.optional-details-field__control {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Blends into the card rather than nesting a second bordered box inside it. */
+.optional-details-field__control .answer-input__control {
+  border: none;
+  background: none;
+  padding: 0;
+  padding-top: var(--space-1);
+}
+
+.optional-details-field__control .answer-input__control:focus {
+  box-shadow: none;
+}
+
+.optional-details-field__helper {
+  margin: 0;
+  padding-left: calc(32px + var(--space-2));
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}

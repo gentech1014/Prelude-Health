@@ -1,0 +1,21 @@
+# Reverse proxy / TLS termination for Prelude Health.
+#
+# Not wired to a real host yet -- there is no deployment target as of this
+# writing. Replace `:80` below with your actual domain (e.g.
+# `prelude-health.example.com`) once one exists; Caddy then issues and
+# renews a Let's Encrypt certificate automatically, no manual cert
+# lifecycle management required.
+#
+# `reverse_proxy` handles WebSocket upgrades natively (needed for
+# /ws/intake/{session_id}, the live-audio call) -- unlike nginx, no extra
+# `Upgrade`/`Connection` header directives are needed here.
+#
+# For a quick local/LAN test with a self-signed cert instead of a real
+# domain, replace the site address with `:443` and add `tls internal`
+# inside the block -- note this is NOT production-correct (browsers will
+# warn on the self-signed cert), it's only for confirming the proxy wiring
+# itself works before a real domain is available.
+
+your-domain.example.com {
+	reverse_proxy app:8000
+}

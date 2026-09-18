@@ -1,0 +1,160 @@
+.end-call-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-align: center;
+}
+
+.end-call-home-button {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  z-index: 10;
+  transition:
+    background-color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.end-call-home-button:hover {
+  background: var(--color-surface-alt);
+}
+
+.end-call-home-button:active {
+  transform: scale(0.92);
+}
+
+@keyframes slowFadeInOut {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.end-call-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-5) var(--space-4) 80px var(--space-4);
+  flex: 1;
+  z-index: 1;
+}
+
+.end-call-patient-name {
+  margin: var(--space-4) 0 0;
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+}
+
+.end-call-subtitle {
+  margin: var(--space-1) 0 0;
+  font-size: var(--fs-body-lg);
+  color: var(--color-text-secondary);
+  animation: slowFadeInOut 3s ease-in-out infinite;
+}
+
+.end-call-thank-you {
+  margin: var(--space-3) 0 0;
+  font-size: var(--fs-body);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.end-call-avatar-wrapper {
+  margin-top: var(--space-6);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.end-call-duration-wrapper {
+  margin-top: var(--space-6);
+}
+
+.end-call-duration-label {
+  margin: 0;
+  font-size: var(--fs-body);
+  color: var(--color-text-secondary);
+}
+
+.end-call-duration-time {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.end-call-footer-message {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.end-call-leaf-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-primary);
+}
+
+.end-call-footer-message p {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.end-call-bottom-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 0;
+}
+
+/* Token-driven wave, replacing a hardcoded-hex SVG data-URI that could not
+   react to dark mode at all — see AppBackgroundScenery for the same pattern. */
+.end-call-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.end-call-waves__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.end-call-done-button {
+  position: relative;
+  font-size: var(--fs-body-lg);
+  margin: var(--space-4) var(--space-4) var(--space-5);
+  z-index: 10;
+}

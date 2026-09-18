@@ -1,0 +1,90 @@
+/* One or more allergen/reaction pairs, or a single "none known" opt-out. */
+
+.allergy-entry-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.allergy-entry-list__nka {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.allergy-entry-list__nka-text {
+  font-size: 0.9rem;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+
+.allergy-entry-list__entries {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.allergy-entry-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.allergy-entry-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.allergy-entry-card__index {
+  font-size: 0.8rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+
+.allergy-entry-card__remove {
+  display: grid;
+  place-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-error-bg);
+  color: var(--color-error);
+}
+
+.allergy-entry-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.allergy-entry-card__field-label {
+  font-size: 0.8rem;
+  font-weight: var(--fw-medium);
+  color: var(--color-text-secondary);
+}
+
+.allergy-entry-list__add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--color-primary-border);
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+  font-weight: var(--fw-semibold);
+  font-size: 0.9rem;
+}

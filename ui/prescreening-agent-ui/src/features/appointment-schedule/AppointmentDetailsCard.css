@@ -1,0 +1,92 @@
+/* Appointment summary card — a highlighted date block beside a list of
+   labeled detail rows (clinician, time, visit type, location). */
+
+.appointment-details-card {
+  display: flex;
+  gap: var(--space-4);
+  width: 100%;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.appointment-details-card__date {
+  flex-shrink: 0;
+  width: 104px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--color-primary-subtle);
+  text-align: center;
+}
+
+.appointment-details-card__date-weekday {
+  font-size: 0.85rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+}
+
+.appointment-details-card__date-day {
+  font-size: 1.3rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.appointment-details-card__date-year {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.appointment-details-card__rows {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.appointment-details-card__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.appointment-details-card__row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.appointment-details-card__row:first-child {
+  padding-top: 0;
+}
+
+.appointment-details-card__row-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+}
+
+.appointment-details-card__row-title {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.appointment-details-card__row-subtitle {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}

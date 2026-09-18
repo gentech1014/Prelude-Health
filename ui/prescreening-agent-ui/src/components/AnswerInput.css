@@ -1,0 +1,97 @@
+/* Shared free-text answer control — the control itself, a character count
+   bottom-left (when maxLength is set), and an explicit submit button
+   positioned inside the field at the bottom-right.  Used everywhere a
+   screen asks the patient to type an answer. */
+
+.answer-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+/* Wrapper that holds the control + the overlaid button */
+.answer-input__field-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.answer-input__control {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  /* Extra right-side padding keeps text from sliding under the button */
+  padding: var(--space-2) 44px var(--space-2) var(--space-3);
+  font: inherit;
+  color: var(--color-text);
+  box-sizing: border-box;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+textarea.answer-input__control {
+  resize: vertical;
+  /* For multiline, give enough bottom room for button + count */
+  padding-bottom: calc(var(--space-2) + 8px);
+}
+
+.answer-input__control::placeholder {
+  color: var(--color-text-muted);
+}
+
+.answer-input__control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-subtle);
+}
+
+/* Character counter — bottom-left inside the field, only rendered when
+   maxLength is supplied */
+.answer-input__count {
+  position: absolute;
+  bottom: 8px;
+  left: var(--space-3);
+  font-size: var(--fs-caption);
+  color: var(--color-text-muted);
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Send / submit button — bottom-right inside the field */
+.answer-input__send {
+  position: absolute;
+  bottom: 7px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    opacity 0.15s ease,
+    transform 0.1s ease;
+}
+
+.answer-input__send:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.answer-input__send:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.answer-input__send:disabled {
+  background: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}

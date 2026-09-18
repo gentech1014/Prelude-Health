@@ -1,0 +1,80 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  DOCKER_IMAGE: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+  AWS_DEFAULT_REGION: "ap-south-1"
+
+build:
+  stage: build
+  image: docker:27
+
+  services:
+    - name: docker:27-dind
+      command: ["--tls=false"]
+
+  variables:
+    DOCKER_HOST: "tcp://docker:2375"
+    DOCKER_TLS_CERTDIR: ""
+
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "development"'
+
+  before_script:
+    - 'echo "$CI_REGISTRY_PASSWORD" | docker login "$CI_REGISTRY" -u "$CI_REGISTRY_USER" --password-stdin'
+
+  script:
+    - 'echo "Building UI Docker image..."'
+    - 'docker build -f deployment/Dockerfile --build-arg VITE_API_BASE_URL="$VITE_API_BASE_URL" --build-arg VITE_WS_BASE_URL="$VITE_WS_BASE_URL" -t "$DOCKER_IMAGE" .'
+    - 'echo "Pushing UI Docker image..."'
+    - 'docker push "$DOCKER_IMAGE"'
+    - 'echo "Build completed successfully"'
+
+
+deploy:
+  stage: deploy
+  image:
+    name: amazon/aws-cli:2.27.47
+    entrypoint: [""]
+
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "development"'
+
+  script:
+    - 'echo "Checking AWS credentials..."'
+    - 'aws sts get-caller-identity'
+    - 'echo "Deploying UI image: $DOCKER_IMAGE"'
+
+    - |
+      COMMAND_ID=$(aws ssm send-command \
+        --region "$AWS_DEFAULT_REGION" \
+        --instance-ids "$EC2_INSTANCE_ID" \
+        --document-name "AWS-RunShellScript" \
+        --comment "GitLab UI deployment - $CI_COMMIT_SHA" \
+        --parameters 'commands=[
+          "echo Starting UI deployment...",
+          "mkdir -p /opt/prelude-health-ui/deployment",
+          "cd /opt/prelude-health-ui/deployment",
+          "echo '"$CI_REGISTRY_PASSWORD"' | docker login '"$CI_REGISTRY"' -u '"$CI_REGISTRY_USER"' --password-stdin",
+          "export IMAGE='"$DOCKER_IMAGE"'",
+          "docker compose pull",
+          "docker compose up -d --remove-orphans",
+          "docker image prune -f",
+          "docker ps",
+          "echo UI deployment completed successfully"
+        ]' \
+        --query "Command.CommandId" \
+        --output text)
+
+      echo "SSM Command ID: $COMMAND_ID"
+
+      aws ssm wait command-executed \
+        --region "$AWS_DEFAULT_REGION" \
+        --command-id "$COMMAND_ID" \
+        --instance-id "$EC2_INSTANCE_ID"
+
+      aws ssm get-command-invocation \
+        --region "$AWS_DEFAULT_REGION" \
+        --command-id "$COMMAND_ID" \
+        --instance-id "$EC2_INSTANCE_ID"

@@ -1,0 +1,89 @@
+/* Welcome/call screen — pieces too small to warrant their own component file. */
+
+.welcome-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+}
+
+.welcome-page__content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  text-align: center;
+}
+
+.welcome-page__heading {
+  margin: 0;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+}
+
+.welcome-page__role {
+  margin: var(--space-1) 0 0;
+  font-size: var(--fs-body);
+  color: var(--color-text-secondary);
+}
+
+/* Hero card — first substantive thing the patient reads, so it gets the
+   hero-surface radius rather than the standard card radius. */
+.welcome-page__info-card {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+  max-width: 420px;
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  background: var(--color-primary-subtle);
+  border: 1px solid var(--color-primary-border);
+}
+
+.welcome-page__info-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.welcome-page__info-title {
+  margin: 0;
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary-active);
+}
+
+.welcome-page__info-body {
+  margin: var(--space-1) 0 0;
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+}
+
+.welcome__voice-prompt {
+  border: none;
+  background: none;
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-secondary);
+  font-size: var(--fs-body);
+  border-radius: var(--radius-md);
+}
+
+/* The opening screen's live indicator is not a control once the call has
+   started on its own — only the autoplay-unlock variant is a button. */
+.welcome__voice-prompt--static {
+  cursor: default;
+}

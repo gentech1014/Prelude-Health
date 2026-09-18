@@ -1,0 +1,42 @@
+/* Single source of truth for every audio waveform in the app. */
+
+.audio-waveform {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.audio-waveform--agent {
+  color: var(--color-ai-accent);
+}
+
+.audio-waveform--user {
+  color: var(--color-primary);
+}
+
+.audio-waveform__bar {
+  width: 3px;
+  min-height: 15%;
+  border-radius: var(--radius-pill);
+  background: currentColor;
+}
+
+.audio-waveform__bar--idle {
+  height: 60%;
+  transform-origin: bottom;
+  animation: audio-waveform-idle 1.4s ease-in-out infinite;
+}
+
+.audio-waveform__bar--static {
+  height: 25%;
+}
+
+@keyframes audio-waveform-idle {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}

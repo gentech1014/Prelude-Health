@@ -1,0 +1,45 @@
+/* Big success badge — a solid, rounded-lobed seal (like a verified badge)
+   with a bold checkmark. A rich one-time confetti burst fires on first load,
+   and once it settles the badge itself keeps a slow, gentle "breathing"
+   glow loop — ambient, not distracting (no spin, no expanding ring). */
+
+.animated-success-tick-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+/* Separate from the entrance-animated badge below so the infinite CSS loop
+   never fights framer-motion's inline transform during the one-shot intro. */
+.animated-success-tick-loop {
+  display: grid;
+  place-content: center;
+  animation: success-tick-loop 2.6s ease-in-out infinite;
+  animation-delay: 1.1s;
+}
+
+.animated-success-tick {
+  position: relative;
+  display: grid;
+  place-content: center;
+}
+
+.animated-success-tick__confetti {
+  position: absolute;
+  /* left/top are set per-piece (inline) to pre-center each piece on the
+     badge; only the burst/fall offset is animated. Left at the default
+     stacking order (behind the badge, which comes later in the DOM). */
+}
+
+@keyframes success-tick-loop {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    transform: scale(1.045);
+    filter: drop-shadow(0 0 18px color-mix(in srgb, var(--color-primary) 55%, transparent));
+  }
+}

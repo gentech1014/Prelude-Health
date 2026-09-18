@@ -1,0 +1,97 @@
+/* Live transcript of what the assistant just asked, plus a listening indicator —
+   sits over the app's shared background scenery, no background of its own.
+   The waveform is the shared AudioWaveform component; their photo/name badge
+   (AgentProfileBadge) is rendered by the page itself, not in here. */
+
+.voice-transcript-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.voice-transcript-panel__speaker {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ai-accent);
+}
+
+/* The patient's own turn, set apart from the assistant's so it is never
+   unclear which of the two is being quoted back — it replaces the
+   assistant's line rather than sitting alongside it. */
+.voice-transcript-panel__speaker--you {
+  color: var(--color-primary);
+}
+
+/* A caption holds the whole turn, so it is bounded and scrolls itself —
+   a long answer would otherwise push the waveform off a phone screen. */
+.voice-transcript-panel__text {
+  margin: 0;
+  max-width: 380px;
+  max-height: 7.5em;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  font-size: 1.05rem;
+  font-weight: var(--fw-medium);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.voice-transcript-panel__text--you {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+/* Each new turn remounts these two elements (keyed by turn id), so this
+   plays once per utterance rather than on every partial-text update. */
+.voice-transcript-panel__speaker,
+.voice-transcript-panel__text {
+  animation: voice-transcript-caption-in 220ms ease-out;
+}
+
+@keyframes voice-transcript-caption-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voice-transcript-panel__speaker,
+  .voice-transcript-panel__text {
+    animation: none;
+  }
+
+  .voice-transcript-panel__text {
+    scroll-behavior: auto;
+  }
+}
+
+.voice-transcript-panel__status-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+.voice-transcript-panel__waveform-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.voice-transcript-panel__listening {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}

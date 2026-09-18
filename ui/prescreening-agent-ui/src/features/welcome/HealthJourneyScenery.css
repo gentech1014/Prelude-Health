@@ -1,0 +1,34 @@
+/* Foreground content laid over the app's shared background scenery (see
+   AppBackgroundScenery) — this component paints no background of its own. */
+
+.health-journey-scenery {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.health-journey-scenery > .welcome__voice-prompt {
+  align-self: center;
+}
+
+.health-journey-scenery__tagline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0;
+  max-width: 300px;
+  text-align: left;
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+
+.health-journey-scenery__tagline-icon {
+  flex-shrink: 0;
+  color: color-mix(in srgb, var(--color-primary) 75%, transparent);
+}

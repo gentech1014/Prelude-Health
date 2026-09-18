@@ -1,0 +1,32 @@
+# Prepared for when a real deployment host exists -- not started as part
+# of any current work. `app` has no published port: it is reachable only
+# from `caddy`, over the internal compose network, which is what makes
+# `--forwarded-allow-ips=*` in the Dockerfile's uvicorn CMD safe (nothing
+# external can reach uvicorn directly to spoof forwarded headers).
+#
+# Usage once a domain is set in Caddyfile and DNS points at this host:
+#   docker compose up -d --build
+
+services:
+  app:
+    build: .
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:

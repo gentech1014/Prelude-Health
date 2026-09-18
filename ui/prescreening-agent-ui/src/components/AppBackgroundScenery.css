@@ -1,0 +1,26 @@
+/* App-wide backdrop — sits behind every screen, fixed to the viewport so it
+   never scrolls with page content. Plain base color up top, a quiet band of
+   contour lines giving way to layered hills anchored to the bottom edge. */
+
+.app-background-scenery {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--color-bg);
+  pointer-events: none;
+}
+
+:root:has(.booking-shell) .app-background-scenery,
+body:has(.booking-shell) .app-background-scenery {
+  display: none !important;
+}
+
+.app-background-scenery__art {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: min(45vh, 400px);
+}

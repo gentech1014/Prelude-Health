@@ -1,0 +1,43 @@
+/* What this call actually covered, derived from the screens the
+   conversation reached. An unticked row is honest information — the
+   transcript on the backend remains the record of what was captured. */
+
+.session-summary-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.session-summary-checklist__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+}
+
+.session-summary-checklist__icon {
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+.session-summary-checklist__label {
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.session-summary-checklist__item--skipped .session-summary-checklist__icon,
+.session-summary-checklist__item--skipped .session-summary-checklist__label {
+  color: var(--color-text-secondary);
+}
+
+.session-summary-checklist__note {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}

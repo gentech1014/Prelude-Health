@@ -1,0 +1,127 @@
+/* Everything already answered on this screen, still editable. */
+
+.answered-symptom-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.answered-symptom-list__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.answered-symptom-list__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.answered-symptom-list__heading {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+}
+
+.answered-symptom-list__count-pill {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.answered-symptom-list__note {
+  margin: 0;
+  font-size: var(--fs-body);
+  color: var(--color-text-secondary);
+}
+
+.answered-symptom-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.answered-symptom {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.answered-symptom__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-primary-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.answered-symptom__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.answered-symptom__question {
+  margin: 0;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+
+/* Shown only for an answer that is not a plain statement of fact — a
+   hedge, a decline, a "don't know", or something the assistant inferred.
+   Quiet on purpose: it is a note about the answer, not a warning, and a
+   patient who declined something should not feel chased about it. */
+.answered-symptom__certainty {
+  margin: 0.125rem 0 0;
+  font-size: var(--fs-caption);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.answered-symptom__answer-wrap {
+  display: flex;
+  width: 100%;
+}
+
+.answered-symptom__answer-wrap .answer-input__control {
+  padding: 12px 16px;
+  border: none;
+  background: var(--color-surface-alt);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--color-text);
+  transition: box-shadow 0.2s;
+}
+
+.answered-symptom__answer-wrap .answer-input__control:focus {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.answered-symptom__edit-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}

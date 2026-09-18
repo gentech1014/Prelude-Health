@@ -1,0 +1,66 @@
+/* Shared top bar for every screen — live status, privacy badge, theme toggle. */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: calc(var(--space-3) + env(safe-area-inset-top, 0px)) var(--space-4) var(--space-3);
+}
+
+.header__status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.header__status-label {
+  font-size: 0.85rem;
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.header__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-success);
+  flex-shrink: 0;
+  animation: header-dot-pulse 2s ease-in-out infinite;
+}
+
+/* The dot reports the real connection, so a call that is not live must not
+   keep pulsing green as though it were. */
+.header__status-dot--idle {
+  background: var(--color-text-secondary);
+  animation: none;
+}
+
+.header__status-dot--pending {
+  background: var(--color-warning);
+}
+
+.header__status-dot--error {
+  background: var(--color-error);
+  animation: none;
+}
+
+@keyframes header-dot-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-success) 45%, transparent);
+  }
+  50% {
+    opacity: 0.75;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-success) 15%, transparent);
+  }
+}

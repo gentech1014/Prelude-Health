@@ -1,0 +1,7 @@
+services:
+  prelude-health-ui:
+    image: ${IMAGE}
+    container_name: prelude-health-ui
+    restart: unless-stopped
+    ports:
+      - "8080:80"

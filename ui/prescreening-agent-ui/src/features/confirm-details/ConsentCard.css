@@ -1,0 +1,84 @@
+.consent-card {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  width: 100%;
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  animation: consent-card-in 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes consent-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.consent-card--recorded {
+  justify-content: center;
+  align-items: center;
+  min-height: 72px;
+}
+
+.consent-card__recorded-message {
+  margin: 0;
+  font-size: var(--fs-body);
+  color: var(--color-success);
+  font-weight: var(--fw-semibold);
+  text-align: center;
+}
+
+.consent-card__body {
+  flex: 1;
+}
+
+.consent-card__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  margin-bottom: var(--space-2);
+}
+
+.consent-card__checkbox {
+  width: 24px;
+  height: 24px;
+  accent-color: var(--color-primary);
+  flex-shrink: 0;
+  cursor: pointer;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+}
+
+.consent-card__label-text {
+  font-size: var(--fs-body);
+  color: var(--color-text);
+  font-weight: var(--fw-bold);
+}
+
+.consent-card__copy {
+  margin: 0 0 var(--space-4) 0;
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.consent-card__actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.consent-card__actions .btn-primary {
+  flex: 2;
+}
+
+.consent-card__actions .btn-secondary {
+  flex: 1;
+}

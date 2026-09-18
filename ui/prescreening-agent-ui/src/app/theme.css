@@ -1,0 +1,205 @@
+/*
+ * Design tokens — single source of truth for color, spacing, radius, shadow.
+ * Update a scale/semantic value here; every component picks it up automatically.
+ * Prelude Health palette: Dusk Indigo primary, warm Linen/Charcoal neutral, Coral
+ * AI accent, warm Gold premium accent (never dominant), fixed clinical semantics.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ---- Raw scales — do not consume directly in components, use semantic tokens below ---- */
+  --indigo-900: #1c2650;
+  --indigo-800: #232f63;
+  --indigo-700: #2a3868;
+  --indigo-600: #34437d;
+  --indigo-500: #3f5096;
+  --indigo-400: #5568b0;
+  --indigo-300: #8b9eff;
+  --indigo-200: #c7cdf0;
+  --indigo-100: #e7e9fa;
+  --indigo-50: #f4f5fd;
+
+  --neutral-50: #fbf8f3;
+  --neutral-100: #f5efe4;
+  --neutral-200: #ece2d1;
+  --neutral-300: #ddd0ba;
+  --neutral-600: #6b6255;
+  --neutral-900: #241f18;
+  --neutral-925: #1c1712;
+  --neutral-950: #171310;
+  --neutral-975: #14110f;
+
+  --coral-900: #6e2a1c;
+  --coral-800: #8a3324;
+  --coral-600: #d1543c;
+  --coral-400: #ff9478;
+  --coral-100: #fde6e0;
+
+  --gold-900: #6f5320;
+  --gold-800: #b8862e;
+  --gold-600: #cf9f45;
+  --gold-500: #e0b368;
+  --gold-300: #eccd8f;
+  --gold-100: #f9f0dc;
+
+  --success-base: #16805c;
+  --warning-base: #b76e00;
+  --error-base: #c0393b;
+  --info-base: #176b8f;
+
+  /* ---- Semantic tokens — components consume these only ---- */
+  --color-bg: var(--neutral-50);
+  --color-surface: #ffffff;
+  --color-surface-alt: var(--neutral-100);
+  /* A hover-only surface tint, a touch warmer than surface-alt — for rows/cards
+     that need a hover state without reaching for the primary-subtle tint. */
+  --color-surface-hover: color-mix(in srgb, var(--color-surface-alt) 100%, var(--indigo-700) 4%);
+  --color-border: var(--neutral-300);
+  --color-border-strong: var(--neutral-600);
+
+  --color-text: var(--neutral-900);
+  --color-text-secondary: var(--neutral-600);
+  --color-text-muted: color-mix(in srgb, var(--neutral-600) 65%, var(--color-bg) 35%);
+  --color-text-inverse: var(--neutral-50);
+
+  --color-primary: var(--indigo-700);
+  --color-primary-hover: var(--indigo-800);
+  --color-primary-active: var(--indigo-900);
+  --color-primary-subtle: var(--indigo-100);
+  --color-primary-border: var(--indigo-200);
+  --color-on-primary: var(--neutral-50);
+
+  --color-ai-accent: var(--coral-800);
+  --color-ai-accent-subtle: var(--coral-100);
+  --color-on-ai-accent: var(--neutral-50);
+
+  /* Premium gold — thin lines, corner accents, subtle borders/highlights only. Never for status. */
+  --color-premium: var(--gold-800);
+  --color-premium-subtle: var(--gold-100);
+  --color-premium-border: var(--gold-500);
+
+  --color-success: var(--success-base);
+  --color-success-bg: #eaf7f1;
+  --color-success-border: color-mix(in srgb, var(--success-base) 45%, transparent);
+
+  --color-warning: var(--warning-base);
+  --color-warning-bg: #fff6df;
+  --color-warning-border: color-mix(in srgb, var(--warning-base) 45%, transparent);
+
+  --color-error: var(--error-base);
+  --color-error-bg: #fdecec;
+  --color-error-border: color-mix(in srgb, var(--error-base) 45%, transparent);
+
+  --color-info: var(--info-base);
+  --color-info-bg: #eaf5f8;
+  --color-info-border: color-mix(in srgb, var(--info-base) 45%, transparent);
+
+  --color-focus-ring: var(--indigo-500);
+  --color-overlay: color-mix(in srgb, var(--neutral-950) 55%, transparent);
+
+  --shadow-sm: 0 1px 2px color-mix(in srgb, var(--neutral-900) 6%, transparent);
+  --shadow-md: 0 4px 12px color-mix(in srgb, var(--neutral-900) 10%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, var(--neutral-900) 16%, transparent);
+  /* Tinted glow shadows for hover-lift and celebration moments — layered on top
+     of the neutral shadows above, which stay the default for ordinary cards. */
+  --shadow-primary-glow: 0 8px 20px color-mix(in srgb, var(--color-primary) 22%, transparent);
+  --shadow-premium-glow: 0 6px 16px color-mix(in srgb, var(--color-premium) 30%, transparent);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  /* Hero surfaces only: consent card, end-call content, booking confirmation,
+     the success-tick container. Everything else uses radius-lg or smaller. */
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* Type scale — one place for font sizes that were previously scattered as
+     inline literals per component. Paired with --font-display/--font-sans
+     and the --fw-* weights below. */
+  --fs-h1: 2rem; /* hero moments: Thank-you headline, End-call name */
+  --fs-h2: 1.5rem; /* CallScreenLayout page titles, Welcome greeting */
+  --fs-h3: 1.2rem; /* dialog/card titles (ConfirmDialog, EmptyState) */
+  --fs-body-lg: 1.05rem; /* live caption text */
+  --fs-body: 0.95rem; /* standard body/subtitle */
+  --fs-body-sm: 0.85rem; /* secondary/help text */
+  --fs-caption: 0.75rem; /* eyebrow labels, StatusBadge, speaker label */
+
+  /* Body/UI typeface — loaded via Google Fonts link in index.html, with a system fallback stack. */
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Display typeface for headings — warm serif, gives the "prelude" narrative a premium,
+     human feel. Loaded alongside DM Sans in index.html. Reserved for genuine heading/hero
+     moments (see global.css) — not every dialog title, which would read as over-decorated. */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+}
+
+/* Dark theme — warm near-black neutrals with a vivid periwinkle accent. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: var(--neutral-975);
+  --color-surface: var(--neutral-925);
+  --color-surface-alt: color-mix(in srgb, var(--neutral-925) 85%, white 8%);
+  --color-surface-hover: color-mix(in srgb, var(--neutral-925) 80%, var(--indigo-300) 8%);
+  --color-border: color-mix(in srgb, white 10%, transparent);
+  --color-border-strong: color-mix(in srgb, white 24%, transparent);
+
+  --color-text: var(--neutral-50);
+  --color-text-secondary: color-mix(in srgb, var(--neutral-300) 60%, var(--neutral-50) 40%);
+  --color-text-muted: var(--neutral-600);
+  --color-text-inverse: var(--neutral-925);
+
+  --color-primary: var(--indigo-300);
+  --color-primary-hover: var(--indigo-200);
+  --color-primary-active: var(--indigo-100);
+  --color-primary-subtle: color-mix(in srgb, var(--indigo-300) 18%, var(--color-surface) 82%);
+  --color-primary-border: color-mix(in srgb, var(--indigo-300) 40%, var(--color-surface) 60%);
+  --color-on-primary: #10152c;
+
+  --color-ai-accent: var(--coral-400);
+  --color-ai-accent-subtle: color-mix(in srgb, var(--coral-800) 40%, var(--color-surface) 60%);
+  --color-on-ai-accent: var(--neutral-50);
+
+  --color-premium: var(--gold-500);
+  --color-premium-subtle: color-mix(in srgb, var(--gold-800) 35%, var(--color-surface) 65%);
+  --color-premium-border: var(--gold-600);
+
+  /* Fixed clinical semantics: status colors track their own base hue in every theme,
+     never the brand primary — so a status dot/badge never appears to change what it
+     means when the theme or brand palette changes. */
+  --color-success: color-mix(in srgb, var(--success-base) 78%, white 22%);
+  --color-success-bg: color-mix(in srgb, var(--success-base) 20%, var(--color-surface) 80%);
+  --color-success-border: color-mix(in srgb, var(--success-base) 45%, transparent);
+
+  --color-warning: color-mix(in srgb, var(--warning-base) 78%, white 22%);
+  --color-warning-bg: color-mix(in srgb, var(--warning-base) 20%, var(--color-surface) 80%);
+  --color-warning-border: color-mix(in srgb, var(--warning-base) 45%, transparent);
+
+  --color-error: color-mix(in srgb, var(--error-base) 78%, white 22%);
+  --color-error-bg: color-mix(in srgb, var(--error-base) 20%, var(--color-surface) 80%);
+  --color-error-border: color-mix(in srgb, var(--error-base) 45%, transparent);
+
+  --color-info: color-mix(in srgb, var(--info-base) 78%, white 22%);
+  --color-info-bg: color-mix(in srgb, var(--info-base) 20%, var(--color-surface) 80%);
+  --color-info-border: color-mix(in srgb, var(--info-base) 45%, transparent);
+
+  --color-focus-ring: var(--indigo-300);
+  --color-overlay: color-mix(in srgb, black 65%, transparent);
+
+  --shadow-sm: 0 1px 2px color-mix(in srgb, black 40%, transparent);
+  --shadow-md: 0 4px 12px color-mix(in srgb, black 45%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, black 55%, transparent);
+  --shadow-primary-glow: 0 8px 20px color-mix(in srgb, var(--color-primary) 30%, transparent);
+  --shadow-premium-glow: 0 6px 16px color-mix(in srgb, var(--color-premium) 35%, transparent);
+}

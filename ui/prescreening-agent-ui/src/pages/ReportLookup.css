@@ -1,0 +1,176 @@
+/* Generated-report lookup — reuses the booking surface's monochrome
+   `--bk-*` tokens (see booking.css) so it reads as the same product, not a
+   bolted-on debug page. */
+
+.report-lookup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--bk-line);
+  background: var(--bk-surface);
+  flex-shrink: 0;
+}
+
+.report-lookup-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--bk-radius);
+  border: 1px solid var(--bk-line);
+  background: var(--bk-surface);
+  color: var(--bk-text);
+  cursor: pointer;
+}
+
+.report-lookup-back:hover {
+  background: var(--bk-subtle);
+}
+
+.report-lookup-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: var(--fw-semibold);
+  color: var(--bk-text);
+}
+
+.report-lookup-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-4);
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.report-lookup-search {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--bk-radius-lg);
+  border: 1px solid var(--bk-line);
+  background: var(--bk-surface);
+}
+
+.report-lookup-search__label {
+  font-size: 0.85rem;
+  font-weight: var(--fw-semibold);
+  color: var(--bk-text);
+}
+
+.report-lookup-search__row {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.report-lookup-search__input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.65rem var(--space-3);
+  border-radius: var(--bk-radius);
+  border: 1px solid var(--bk-line);
+  background: var(--bk-ground);
+  color: var(--bk-text);
+  font: inherit;
+}
+
+.report-lookup-search__input::placeholder {
+  color: var(--bk-text-muted);
+}
+
+.report-lookup-search__input:focus {
+  outline: none;
+  border-color: var(--bk-focus);
+}
+
+.report-lookup-search__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.65rem var(--space-4);
+  border-radius: var(--bk-radius);
+  border: none;
+  background: var(--bk-ink);
+  color: var(--bk-on-ink);
+  font-weight: var(--fw-semibold);
+  font-size: 0.9rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.report-lookup-search__button:hover:not(:disabled) {
+  background: var(--bk-ink-hover);
+}
+
+.report-lookup-search__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.report-lookup-search__hint {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--bk-text-secondary);
+}
+
+.report-lookup-file {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--bk-radius-lg);
+  border: 1px solid var(--bk-line);
+  background: var(--bk-surface);
+  text-decoration: none;
+  color: inherit;
+}
+
+.report-lookup-file:hover {
+  background: var(--bk-subtle);
+  border-color: var(--bk-line-strong);
+}
+
+.report-lookup-file__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--bk-radius);
+  background: var(--bk-subtle);
+  color: var(--bk-text);
+}
+
+.report-lookup-file__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.report-lookup-file__name {
+  font-size: 0.95rem;
+  font-weight: var(--fw-semibold);
+  color: var(--bk-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.report-lookup-file__hint {
+  font-size: 0.8rem;
+  color: var(--bk-text-secondary);
+}
+
+.report-lookup-file__external {
+  flex-shrink: 0;
+  color: var(--bk-text-secondary);
+}

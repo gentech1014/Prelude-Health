@@ -1,0 +1,78 @@
+.toast-stack {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + var(--space-4));
+  right: var(--space-4);
+  width: 380px;
+  max-width: calc(100vw - var(--space-8));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  z-index: 200;
+  pointer-events: none;
+}
+
+.toast {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-3) calc(var(--space-3) + 3px) calc(var(--space-3) + 4px);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  pointer-events: auto;
+  animation: toast-slide-in 220ms ease both;
+}
+
+.toast--leaving {
+  animation-name: toast-slide-out;
+}
+
+.toast__strip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.toast__icon {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.toast__message {
+  flex: 1;
+  font-size: var(--fs-body-sm);
+  color: var(--color-text);
+}
+
+.toast__dismiss {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  display: flex;
+  border-radius: var(--radius-sm);
+  padding: 2px;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.toast__dismiss:hover {
+  color: var(--color-text);
+  background: var(--color-surface-hover);
+}
+
+.toast__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  opacity: 0.55;
+  transform-origin: left;
+  animation-name: toast-progress-shrink;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}

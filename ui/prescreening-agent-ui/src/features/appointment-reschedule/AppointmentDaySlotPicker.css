@@ -1,0 +1,119 @@
+/* Date-then-time reschedule picker — a horizontally scrolling strip of
+   dates, then a time grid for whichever one is selected. Replaces a single
+   long list of every open slot on every date stacked vertically. */
+
+.appointment-day-slot-picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.appointment-day-slot-picker__strip {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding-bottom: var(--space-1);
+  scrollbar-width: thin;
+}
+
+.appointment-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  width: 56px;
+  padding: var(--space-2) 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    transform 0.15s cubic-bezier(0.32, 0.72, 0, 1),
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.appointment-day:hover:not(:disabled):not(.appointment-day--selected) {
+  border-color: var(--color-primary-border);
+  background: var(--color-surface-hover);
+}
+
+.appointment-day:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.appointment-day--selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.appointment-day:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.appointment-day__weekday {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.appointment-day__number {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+}
+
+.appointment-day-slot-picker__hint {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+}
+
+.appointment-day-slot-picker__selected-date {
+  margin: 0;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.appointment-day-slot-picker__times {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: var(--space-2);
+}
+
+.appointment-time {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  transition:
+    transform 0.15s cubic-bezier(0.32, 0.72, 0, 1),
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.appointment-time:hover:not(.appointment-time--selected) {
+  border-color: var(--color-primary-border);
+  background: var(--color-surface-hover);
+}
+
+.appointment-time:active {
+  transform: scale(0.95);
+}
+
+.appointment-time--selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+  font-weight: var(--fw-semibold);
+}
